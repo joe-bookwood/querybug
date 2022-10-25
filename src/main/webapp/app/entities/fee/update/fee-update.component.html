@@ -1,0 +1,52 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-fee-heading" data-cy="FeeCreateUpdateHeading" jhiTranslate="querybugApp.fee.home.createOrEditLabel">
+        Create or edit a Fee
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" *ngIf="editForm.controls.id.value !== null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="querybugApp.fee.volume" for="field_volume">Volume</label>
+          <input type="number" class="form-control" name="volume" id="field_volume" data-cy="volume" formControlName="volume" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="querybugApp.fee.percent" for="field_percent">Percent</label>
+          <input type="number" class="form-control" name="percent" id="field_percent" data-cy="percent" formControlName="percent" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="querybugApp.fee.pair" for="field_pair">Pair</label>
+          <select class="form-control" id="field_pair" data-cy="pair" name="pair" formControlName="pair" [compareWith]="comparePair">
+            <option [ngValue]="null"></option>
+            <option [ngValue]="pairOption" *ngFor="let pairOption of pairsSharedCollection">{{ pairOption.id }}</option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

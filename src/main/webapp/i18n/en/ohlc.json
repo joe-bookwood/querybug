@@ -1,0 +1,32 @@
+{
+  "querybugApp": {
+    "ohlc": {
+      "home": {
+        "title": "Ohlcs",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Ohlc",
+        "createOrEditLabel": "Create or edit a Ohlc",
+        "notFound": "No Ohlcs found"
+      },
+      "created": "A new Ohlc is created with identifier {{ param }}",
+      "updated": "A Ohlc is updated with identifier {{ param }}",
+      "deleted": "A Ohlc is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Ohlc {{ id }}?"
+      },
+      "detail": {
+        "title": "Ohlc"
+      },
+      "id": "ID",
+      "time": "Time",
+      "open": "Open",
+      "high": "High",
+      "low": "Low",
+      "close": "Close",
+      "volumeWeightedAveragePrice": "Volume Weighted Average Price",
+      "volume": "Volume",
+      "count": "Count",
+      "chart": "Chart"
+    }
+  }
+}

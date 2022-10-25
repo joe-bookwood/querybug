@@ -1,0 +1,66 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="ohlc">
+      <h2 data-cy="ohlcDetailsHeading"><span jhiTranslate="querybugApp.ohlc.detail.title">Ohlc</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ ohlc.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="querybugApp.ohlc.time">Time</span></dt>
+        <dd>
+          <span>{{ ohlc.time | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="querybugApp.ohlc.open">Open</span></dt>
+        <dd>
+          <span>{{ ohlc.open }}</span>
+        </dd>
+        <dt><span jhiTranslate="querybugApp.ohlc.high">High</span></dt>
+        <dd>
+          <span>{{ ohlc.high }}</span>
+        </dd>
+        <dt><span jhiTranslate="querybugApp.ohlc.low">Low</span></dt>
+        <dd>
+          <span>{{ ohlc.low }}</span>
+        </dd>
+        <dt><span jhiTranslate="querybugApp.ohlc.close">Close</span></dt>
+        <dd>
+          <span>{{ ohlc.close }}</span>
+        </dd>
+        <dt><span jhiTranslate="querybugApp.ohlc.volumeWeightedAveragePrice">Volume Weighted Average Price</span></dt>
+        <dd>
+          <span>{{ ohlc.volumeWeightedAveragePrice }}</span>
+        </dd>
+        <dt><span jhiTranslate="querybugApp.ohlc.volume">Volume</span></dt>
+        <dd>
+          <span>{{ ohlc.volume }}</span>
+        </dd>
+        <dt><span jhiTranslate="querybugApp.ohlc.count">Count</span></dt>
+        <dd>
+          <span>{{ ohlc.count }}</span>
+        </dd>
+        <dt><span jhiTranslate="querybugApp.ohlc.chart">Chart</span></dt>
+        <dd>
+          <div *ngIf="ohlc.chart">
+            <a [routerLink]="['/chart', ohlc.chart.id, 'view']">{{ ohlc.chart?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/ohlc', ohlc.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

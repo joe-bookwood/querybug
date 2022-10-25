@@ -1,0 +1,52 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="asset">
+      <h2 data-cy="assetDetailsHeading"><span jhiTranslate="querybugApp.asset.detail.title">Asset</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ asset.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="querybugApp.asset.name">Name</span></dt>
+        <dd>
+          <span>{{ asset.name }}</span>
+        </dd>
+        <dt><span jhiTranslate="querybugApp.asset.assetClass">Asset Class</span></dt>
+        <dd>
+          <span>{{ asset.assetClass }}</span>
+        </dd>
+        <dt><span jhiTranslate="querybugApp.asset.alternativeName">Alternative Name</span></dt>
+        <dd>
+          <span>{{ asset.alternativeName }}</span>
+        </dd>
+        <dt><span jhiTranslate="querybugApp.asset.decimals">Decimals</span></dt>
+        <dd>
+          <span>{{ asset.decimals }}</span>
+        </dd>
+        <dt><span jhiTranslate="querybugApp.asset.displayDecimals">Display Decimals</span></dt>
+        <dd>
+          <span>{{ asset.displayDecimals }}</span>
+        </dd>
+        <dt><span jhiTranslate="querybugApp.asset.lastChecked">Last Checked</span></dt>
+        <dd>
+          <span>{{ asset.lastChecked | formatMediumDatetime }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/asset', asset.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

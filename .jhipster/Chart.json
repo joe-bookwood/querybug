@@ -1,0 +1,45 @@
+{
+  "applications": ["querybug"],
+  "changelogDate": "20221025074514",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "chart",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "last",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "maxCount",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "disabled",
+      "fieldType": "Boolean"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Chart",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "pair",
+      "relationshipName": "pair",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    },
+    {
+      "otherEntityName": "timeRange",
+      "relationshipName": "timeRange",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    }
+  ],
+  "service": "no"
+}

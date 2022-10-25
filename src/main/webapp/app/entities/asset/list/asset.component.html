@@ -1,0 +1,88 @@
+<div>
+  <h2 id="page-heading" data-cy="AssetHeading">
+    <span jhiTranslate="querybugApp.asset.home.title">Assets</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="querybugApp.asset.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-asset"
+        [routerLink]="['/asset/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="querybugApp.asset.home.createLabel"> Create a new Asset </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="assets?.length === 0">
+    <span jhiTranslate="querybugApp.asset.home.notFound">No Assets found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="assets && assets.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="name"><span jhiTranslate="querybugApp.asset.name">Name</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="assetClass">
+            <span jhiTranslate="querybugApp.asset.assetClass">Asset Class</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="alternativeName">
+            <span jhiTranslate="querybugApp.asset.alternativeName">Alternative Name</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="decimals">
+            <span jhiTranslate="querybugApp.asset.decimals">Decimals</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="displayDecimals">
+            <span jhiTranslate="querybugApp.asset.displayDecimals">Display Decimals</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="lastChecked">
+            <span jhiTranslate="querybugApp.asset.lastChecked">Last Checked</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let asset of assets; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/asset', asset.id, 'view']">{{ asset.id }}</a>
+          </td>
+          <td>{{ asset.name }}</td>
+          <td>{{ asset.assetClass }}</td>
+          <td>{{ asset.alternativeName }}</td>
+          <td>{{ asset.decimals }}</td>
+          <td>{{ asset.displayDecimals }}</td>
+          <td>{{ asset.lastChecked | formatMediumDatetime }}</td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button type="submit" [routerLink]="['/asset', asset.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button type="submit" [routerLink]="['/asset', asset.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(asset)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

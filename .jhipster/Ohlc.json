@@ -1,0 +1,55 @@
+{
+  "applications": ["querybug"],
+  "changelogDate": "20221025074714",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "ohlc",
+  "fields": [
+    {
+      "fieldName": "time",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "open",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldName": "high",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldName": "low",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldName": "close",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldName": "volumeWeightedAveragePrice",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldName": "volume",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldName": "count",
+      "fieldType": "Integer"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Ohlc",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "chart",
+      "relationshipName": "chart",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    }
+  ],
+  "service": "no"
+}

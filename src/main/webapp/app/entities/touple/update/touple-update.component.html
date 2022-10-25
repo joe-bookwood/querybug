@@ -1,0 +1,86 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-touple-heading" data-cy="ToupleCreateUpdateHeading" jhiTranslate="querybugApp.touple.home.createOrEditLabel">
+        Create or edit a Touple
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" *ngIf="editForm.controls.id.value !== null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="querybugApp.touple.computation" for="field_computation">Computation</label>
+          <input
+            type="number"
+            class="form-control"
+            name="computation"
+            id="field_computation"
+            data-cy="computation"
+            formControlName="computation"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="querybugApp.touple.time" for="field_time">Time</label>
+          <div class="d-flex">
+            <input
+              id="field_time"
+              data-cy="time"
+              type="datetime-local"
+              class="form-control"
+              name="time"
+              formControlName="time"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="querybugApp.touple.calculation" for="field_calculation">Calculation</label>
+          <select
+            class="form-control"
+            id="field_calculation"
+            data-cy="calculation"
+            name="calculation"
+            formControlName="calculation"
+            [compareWith]="compareCalculation"
+          >
+            <option [ngValue]="null"></option>
+            <option [ngValue]="calculationOption" *ngFor="let calculationOption of calculationsSharedCollection">
+              {{ calculationOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="querybugApp.touple.ohlc" for="field_ohlc">Ohlc</label>
+          <select class="form-control" id="field_ohlc" data-cy="ohlc" name="ohlc" formControlName="ohlc" [compareWith]="compareOhlc">
+            <option [ngValue]="null"></option>
+            <option [ngValue]="ohlcOption" *ngFor="let ohlcOption of ohlcsSharedCollection">{{ ohlcOption.id }}</option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

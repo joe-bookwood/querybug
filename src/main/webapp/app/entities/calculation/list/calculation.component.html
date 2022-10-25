@@ -1,0 +1,96 @@
+<div>
+  <h2 id="page-heading" data-cy="CalculationHeading">
+    <span jhiTranslate="querybugApp.calculation.home.title">Calculations</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="querybugApp.calculation.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-calculation"
+        [routerLink]="['/calculation/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="querybugApp.calculation.home.createLabel"> Create a new Calculation </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="calculations?.length === 0">
+    <span jhiTranslate="querybugApp.calculation.home.notFound">No Calculations found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="calculations && calculations.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="name">
+            <span jhiTranslate="querybugApp.calculation.name">Name</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="last">
+            <span jhiTranslate="querybugApp.calculation.last">Last</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="disabled">
+            <span jhiTranslate="querybugApp.calculation.disabled">Disabled</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="chart.id">
+            <span jhiTranslate="querybugApp.calculation.chart">Chart</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let calculation of calculations; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/calculation', calculation.id, 'view']">{{ calculation.id }}</a>
+          </td>
+          <td>{{ calculation.name }}</td>
+          <td>{{ calculation.last | formatMediumDatetime }}</td>
+          <td>{{ calculation.disabled }}</td>
+          <td>
+            <div *ngIf="calculation.chart">
+              <a [routerLink]="['/chart', calculation.chart.id, 'view']">{{ calculation.chart?.id }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/calculation', calculation.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/calculation', calculation.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(calculation)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

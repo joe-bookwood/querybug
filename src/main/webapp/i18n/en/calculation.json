@@ -1,0 +1,27 @@
+{
+  "querybugApp": {
+    "calculation": {
+      "home": {
+        "title": "Calculations",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Calculation",
+        "createOrEditLabel": "Create or edit a Calculation",
+        "notFound": "No Calculations found"
+      },
+      "created": "A new Calculation is created with identifier {{ param }}",
+      "updated": "A Calculation is updated with identifier {{ param }}",
+      "deleted": "A Calculation is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Calculation {{ id }}?"
+      },
+      "detail": {
+        "title": "Calculation"
+      },
+      "id": "ID",
+      "name": "Name",
+      "last": "Last",
+      "disabled": "Disabled",
+      "chart": "Chart"
+    }
+  }
+}

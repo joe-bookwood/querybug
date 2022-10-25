@@ -1,0 +1,35 @@
+{
+  "applications": ["querybug"],
+  "changelogDate": "20221025075014",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "touple",
+  "fields": [
+    {
+      "fieldName": "computation",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldName": "time",
+      "fieldType": "ZonedDateTime"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Touple",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "calculation",
+      "relationshipName": "calculation",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "ohlc",
+      "relationshipName": "ohlc",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "no"
+}

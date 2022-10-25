@@ -1,0 +1,26 @@
+{
+  "querybugApp": {
+    "fee": {
+      "home": {
+        "title": "Fees",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Fee",
+        "createOrEditLabel": "Create or edit a Fee",
+        "notFound": "No Fees found"
+      },
+      "created": "A new Fee is created with identifier {{ param }}",
+      "updated": "A Fee is updated with identifier {{ param }}",
+      "deleted": "A Fee is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Fee {{ id }}?"
+      },
+      "detail": {
+        "title": "Fee"
+      },
+      "id": "ID",
+      "volume": "Volume",
+      "percent": "Percent",
+      "pair": "Pair"
+    }
+  }
+}

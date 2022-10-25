@@ -1,0 +1,29 @@
+{
+  "querybugApp": {
+    "chart": {
+      "home": {
+        "title": "Charts",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Chart",
+        "createOrEditLabel": "Create or edit a Chart",
+        "notFound": "No Charts found"
+      },
+      "created": "A new Chart is created with identifier {{ param }}",
+      "updated": "A Chart is updated with identifier {{ param }}",
+      "deleted": "A Chart is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Chart {{ id }}?"
+      },
+      "detail": {
+        "title": "Chart"
+      },
+      "id": "ID",
+      "name": "Name",
+      "last": "Last",
+      "maxCount": "Max Count",
+      "disabled": "Disabled",
+      "pair": "Pair",
+      "timeRange": "Time Range"
+    }
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "applications": ["querybug"],
+  "changelogDate": "20221025074414",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "calculation",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "last",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "disabled",
+      "fieldType": "Boolean"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Calculation",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "chart",
+      "relationshipName": "chart",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    }
+  ],
+  "service": "no"
+}

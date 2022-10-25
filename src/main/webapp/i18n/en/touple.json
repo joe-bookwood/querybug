@@ -1,0 +1,27 @@
+{
+  "querybugApp": {
+    "touple": {
+      "home": {
+        "title": "Touples",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Touple",
+        "createOrEditLabel": "Create or edit a Touple",
+        "notFound": "No Touples found"
+      },
+      "created": "A new Touple is created with identifier {{ param }}",
+      "updated": "A Touple is updated with identifier {{ param }}",
+      "deleted": "A Touple is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Touple {{ id }}?"
+      },
+      "detail": {
+        "title": "Touple"
+      },
+      "id": "ID",
+      "computation": "Computation",
+      "time": "Time",
+      "calculation": "Calculation",
+      "ohlc": "Ohlc"
+    }
+  }
+}

@@ -1,0 +1,68 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="pair">
+      <h2 data-cy="pairDetailsHeading"><span jhiTranslate="querybugApp.pair.detail.title">Pair</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ pair.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="querybugApp.pair.name">Name</span></dt>
+        <dd>
+          <span>{{ pair.name }}</span>
+        </dd>
+        <dt><span jhiTranslate="querybugApp.pair.altname">Altname</span></dt>
+        <dd>
+          <span>{{ pair.altname }}</span>
+        </dd>
+        <dt><span jhiTranslate="querybugApp.pair.webSocketPairName">Web Socket Pair Name</span></dt>
+        <dd>
+          <span>{{ pair.webSocketPairName }}</span>
+        </dd>
+        <dt><span jhiTranslate="querybugApp.pair.lot">Lot</span></dt>
+        <dd>
+          <span>{{ pair.lot }}</span>
+        </dd>
+        <dt><span jhiTranslate="querybugApp.pair.pairDecimal">Pair Decimal</span></dt>
+        <dd>
+          <span>{{ pair.pairDecimal }}</span>
+        </dd>
+        <dt><span jhiTranslate="querybugApp.pair.lotDecimals">Lot Decimals</span></dt>
+        <dd>
+          <span>{{ pair.lotDecimals }}</span>
+        </dd>
+        <dt><span jhiTranslate="querybugApp.pair.lotMultiplier">Lot Multiplier</span></dt>
+        <dd>
+          <span>{{ pair.lotMultiplier }}</span>
+        </dd>
+        <dt><span jhiTranslate="querybugApp.pair.base">Base</span></dt>
+        <dd>
+          <div *ngIf="pair.base">
+            <a [routerLink]="['/asset', pair.base.id, 'view']">{{ pair.base?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="querybugApp.pair.quote">Quote</span></dt>
+        <dd>
+          <div *ngIf="pair.quote">
+            <a [routerLink]="['/asset', pair.quote.id, 'view']">{{ pair.quote?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/pair', pair.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

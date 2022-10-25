@@ -1,0 +1,106 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-ohlc-heading" data-cy="OhlcCreateUpdateHeading" jhiTranslate="querybugApp.ohlc.home.createOrEditLabel">
+        Create or edit a Ohlc
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" *ngIf="editForm.controls.id.value !== null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="querybugApp.ohlc.time" for="field_time">Time</label>
+          <div class="d-flex">
+            <input
+              id="field_time"
+              data-cy="time"
+              type="datetime-local"
+              class="form-control"
+              name="time"
+              formControlName="time"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="querybugApp.ohlc.open" for="field_open">Open</label>
+          <input type="number" class="form-control" name="open" id="field_open" data-cy="open" formControlName="open" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="querybugApp.ohlc.high" for="field_high">High</label>
+          <input type="number" class="form-control" name="high" id="field_high" data-cy="high" formControlName="high" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="querybugApp.ohlc.low" for="field_low">Low</label>
+          <input type="number" class="form-control" name="low" id="field_low" data-cy="low" formControlName="low" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="querybugApp.ohlc.close" for="field_close">Close</label>
+          <input type="number" class="form-control" name="close" id="field_close" data-cy="close" formControlName="close" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="querybugApp.ohlc.volumeWeightedAveragePrice" for="field_volumeWeightedAveragePrice"
+            >Volume Weighted Average Price</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="volumeWeightedAveragePrice"
+            id="field_volumeWeightedAveragePrice"
+            data-cy="volumeWeightedAveragePrice"
+            formControlName="volumeWeightedAveragePrice"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="querybugApp.ohlc.volume" for="field_volume">Volume</label>
+          <input type="number" class="form-control" name="volume" id="field_volume" data-cy="volume" formControlName="volume" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="querybugApp.ohlc.count" for="field_count">Count</label>
+          <input type="number" class="form-control" name="count" id="field_count" data-cy="count" formControlName="count" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="querybugApp.ohlc.chart" for="field_chart">Chart</label>
+          <select class="form-control" id="field_chart" data-cy="chart" name="chart" formControlName="chart" [compareWith]="compareChart">
+            <option *ngIf="!editForm.get('chart')!.value" [ngValue]="null" selected></option>
+            <option [ngValue]="chartOption" *ngFor="let chartOption of chartsSharedCollection">{{ chartOption.id }}</option>
+          </select>
+        </div>
+        <div *ngIf="editForm.get(['chart'])!.invalid && (editForm.get(['chart'])!.dirty || editForm.get(['chart'])!.touched)">
+          <small class="form-text text-danger" *ngIf="editForm.get(['chart'])?.errors?.required" jhiTranslate="entity.validation.required">
+            This field is required.
+          </small>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

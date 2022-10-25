@@ -1,0 +1,63 @@
+{
+  "applications": ["querybug"],
+  "changelogDate": "20221025074814",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "pair",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "altname",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "webSocketPairName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "lot",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "pairDecimal",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "lotDecimals",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "lotMultiplier",
+      "fieldType": "Integer"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Pair",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "fee",
+      "otherEntityRelationshipName": "pair",
+      "relationshipName": "fees",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "asset",
+      "relationshipName": "base",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    },
+    {
+      "otherEntityName": "asset",
+      "relationshipName": "quote",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    }
+  ],
+  "service": "no"
+}
