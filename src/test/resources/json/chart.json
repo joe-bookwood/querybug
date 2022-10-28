@@ -1,0 +1,21 @@
+{
+  "name": "XBTEUR ts-range-15",
+  "last": null,
+  "maxCount": null,
+  "disabled": false,
+  "pair": {
+    "name": "XXBTZEUR",
+    "altname": "XBTEUR",
+    "webSocketPairName": "XBT/EUR",
+    "lot": "unit",
+    "pairDecimal": 1,
+    "lotDecimals": 8,
+    "lotMultiplier": 1
+  },
+  "timeRange": {
+    "name": "15M",
+    "rangeSize": 15,
+    "duration": 900.0,
+    "description": "ts-range-15"
+  }
+}

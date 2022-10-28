@@ -1,0 +1,63 @@
+{
+  "name": "XXBTZEUR",
+  "altname": "XBTEUR",
+  "webSocketPairName": "XBT/EUR",
+  "lot": "unit",
+  "pairDecimal": 1,
+  "lotDecimals": 8,
+  "lotMultiplier": 1,
+  "fees": [
+    {
+      "volume": 0,
+      "percent": 0.25999999046325684
+    },
+    {
+      "volume": 50000,
+      "percent": 0.23999999463558197
+    },
+    {
+      "volume": 100000,
+      "percent": 0.2199999988079071
+    },
+    {
+      "volume": 250000,
+      "percent": 0.20000000298023224
+    },
+    {
+      "volume": 500000,
+      "percent": 0.18000000715255737
+    },
+    {
+      "volume": 1000000,
+      "percent": 0.1599999964237213
+    },
+    {
+      "volume": 2500000,
+      "percent": 0.14000000059604645
+    },
+    {
+      "volume": 5000000,
+      "percent": 0.11999999731779099
+    },
+    {
+      "volume": 10000000,
+      "percent": 0.10000000149011612
+    }
+  ],
+  "base": {
+    "name": "XXBT",
+    "assetClass": "currency",
+    "alternativeName": "XBT",
+    "decimals": 10,
+    "displayDecimals": 5,
+    "lastChecked": 1666720209.648218593
+  },
+  "quote": {
+    "name": "ZEUR",
+    "assetClass": "currency",
+    "alternativeName": "EUR",
+    "decimals": 4,
+    "displayDecimals": 2,
+    "lastChecked": 1666720209.649844275
+  }
+}

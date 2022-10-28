@@ -1,0 +1,11 @@
+{
+  "name": "rsi14",
+  "last": 1666504800.0,
+  "disabled": false,
+  "chart": {
+    "name": "XBTEUR ts-range-15",
+    "last": null,
+    "maxCount": null,
+    "disabled": false
+  }
+}
