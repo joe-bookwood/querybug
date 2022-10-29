@@ -37,7 +37,7 @@ application {
     withAdminUi true
   }
 
-  entities Asset, Calculation, Chart, Fee, Ohlc, Pair, TimeRange, Touple
+  entities Asset, Calculation, Chart, Fee, Ohlc, Pair, TimeRange, Tuple
 }
 
 entity Asset {
@@ -88,7 +88,7 @@ entity TimeRange {
   duration Duration
   description String
 }
-entity Touple {
+entity Tuple {
   computation BigDecimal
   time ZonedDateTime
 }
@@ -102,7 +102,7 @@ relationship ManyToOne {
   Ohlc{chart required} to Chart
   Pair{base required} to Asset
   Pair{quote required} to Asset
-  Touple{calculation} to Calculation
-  Touple{ohlc} to Ohlc
+  Tuple{calculation} to Calculation
+  Tuple{ohlc} to Ohlc
 }
 

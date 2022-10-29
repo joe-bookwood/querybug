@@ -19,7 +19,7 @@ public class CalculationService {
 
     private final CalculationRepository calculationRepository;
 
-    private final ToupleRepository toupleRepository;
+    private final TupleRepository tupleRepository;
 
     private final OhlcRepository ohlcRepository;
 
@@ -30,12 +30,12 @@ public class CalculationService {
 
     public CalculationService(
         CalculationRepository calculationRepository,
-        ToupleRepository toupleRepository,
+        TupleRepository tupleRepository,
         OhlcRepository ohlcRepository,
         ChartRepository chartRepository
     ) {
         this.calculationRepository = calculationRepository;
-        this.toupleRepository = toupleRepository;
+        this.tupleRepository = tupleRepository;
         this.ohlcRepository = ohlcRepository;
         this.chartRepository = chartRepository;
     }

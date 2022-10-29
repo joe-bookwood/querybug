@@ -20,7 +20,7 @@
     "enableHibernateCache": true,
     "enableSwaggerCodegen": false,
     "enableTranslation": true,
-    "entities": ["Asset", "Calculation", "Chart", "Fee", "Ohlc", "Pair", "TimeRange", "Touple"],
+    "entities": ["Asset", "Calculation", "Chart", "Fee", "Ohlc", "Pair", "TimeRange", "Tuple"],
     "entitySuffix": "",
     "gradleEnterpriseHost": "",
     "jhiPrefix": "jhi",

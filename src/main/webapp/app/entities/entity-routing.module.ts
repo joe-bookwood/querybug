@@ -40,9 +40,9 @@ import { RouterModule } from '@angular/router';
         loadChildren: () => import('./time-range/time-range.module').then(m => m.TimeRangeModule),
       },
       {
-        path: 'touple',
-        data: { pageTitle: 'querybugApp.touple.home.title' },
-        loadChildren: () => import('./touple/touple.module').then(m => m.ToupleModule),
+        path: 'tuple',
+        data: { pageTitle: 'querybugApp.tuple.home.title' },
+        loadChildren: () => import('./tuple/tuple.module').then(m => m.TupleModule),
       },
       /* jhipster-needle-add-entity-route - JHipster will add entity modules routes here */
     ]),

@@ -56,7 +56,7 @@ public class CacheConfiguration {
             createCache(cm, de.bitc.se.domain.Pair.class.getName());
             createCache(cm, de.bitc.se.domain.Pair.class.getName() + ".fees");
             createCache(cm, de.bitc.se.domain.TimeRange.class.getName());
-            createCache(cm, de.bitc.se.domain.Touple.class.getName());
+            createCache(cm, de.bitc.se.domain.Tuple.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }

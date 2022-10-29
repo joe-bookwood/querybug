@@ -35,8 +35,8 @@ export const EntityNavbarItems = [
     translationKey: 'global.menu.entities.timeRange',
   },
   {
-    name: 'Touple',
-    route: 'touple',
-    translationKey: 'global.menu.entities.touple',
+    name: 'Tuple',
+    route: 'tuple',
+    translationKey: 'global.menu.entities.tuple',
   },
 ];

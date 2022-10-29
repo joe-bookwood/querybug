@@ -44,7 +44,7 @@ class CalculationServiceIT {
     private OhlcRepository ohlcRepository;
 
     @Autowired
-    private ToupleRepository toupleRepository;
+    private TupleRepository tupleRepository;
 
     @Autowired
     private CalculationRepository calculationRepository;
@@ -76,7 +76,7 @@ class CalculationServiceIT {
 
     private void init() throws IOException {
         ranges = Set.of(1, 5, 15, 30, 60, 240, 1440);
-        toupleRepository.deleteAll();
+        tupleRepository.deleteAll();
         ohlcRepository.deleteAll();
         calculationRepository.deleteAll();
 
@@ -127,15 +127,15 @@ class CalculationServiceIT {
                 ohlcs.put(saved.getTime(), saved);
             });
         testData
-            .getTouples()
+            .getTuples()
             .stream()
-            .sorted(Comparator.comparing(Touple::getTime))
+            .sorted(Comparator.comparing(Tuple::getTime))
             .forEach(t -> {
                 Ohlc ohlc = ohlcs.get(t.getTime());
                 t.setId(null);
                 t.setOhlc(ohlc);
                 t.setCalculation(calculation);
-                toupleRepository.saveAndFlush(t);
+                tupleRepository.saveAndFlush(t);
             });
 
         // Start Hibernate tests
@@ -161,7 +161,7 @@ class CalculationServiceIT {
 
         Query withQuerySimpleSecondPart = entityManager
             .createNativeQuery(
-                "with touple_diff as (select t.calculation_id, t.id, t.ohlc_id, t.time, t.time - lag(t.time, 1) over (order by t.time) as diff from touple t where CALCULATION_ID = :calculationid ) select calculation_id,time from touple_diff order by calculation_id;"
+                "with tuple_diff as (select t.calculation_id, t.id, t.ohlc_id, t.time, t.time - lag(t.time, 1) over (order by t.time) as diff from tuple t where CALCULATION_ID = :calculationid ) select calculation_id,time from tuple_diff order by calculation_id;"
             )
             .setParameter("calculationid", calculationId);
         List<Object[]> resSimpleWithSecondPart = withQuerySimpleSecondPart.getResultList();
@@ -170,7 +170,7 @@ class CalculationServiceIT {
 
         Query impossibleJoin = entityManager
             .createNativeQuery(
-                "with params as (select ca.id as ca_id, chart_id, range_size, range_size * interval '1' minute as size from calculation ca inner join chart c on c.id = ca.chart_id inner join time_range tr on tr.id = c.time_range_id where ca.id = :calculationid), touple_diff as (select t.calculation_id, t.id, t.ohlc_id, t.time, t.time - lag(t.time, 1) over (order by t.time) as diff from touple t inner join params p on p.ca_id = t.CALCULATION_ID where CALCULATION_ID = ca_id) select calculation_id from touple_diff order by calculation_id;"
+                "with params as (select ca.id as ca_id, chart_id, range_size, range_size * interval '1' minute as size from calculation ca inner join chart c on c.id = ca.chart_id inner join time_range tr on tr.id = c.time_range_id where ca.id = :calculationid), tuple_diff as (select t.calculation_id, t.id, t.ohlc_id, t.time, t.time - lag(t.time, 1) over (order by t.time) as diff from tuple t inner join params p on p.ca_id = t.CALCULATION_ID where CALCULATION_ID = ca_id) select calculation_id from tuple_diff order by calculation_id;"
             )
             .setParameter("calculationid", calculationId);
         List<Object[]> resImpossibleJoin = impossibleJoin.getResultList();

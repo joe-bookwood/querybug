@@ -14,7 +14,8 @@
         "ohlc": "Ohlc",
         "pair": "Pair",
         "timeRange": "Time Range",
-        "touple": "Touple",
+        "tuple": "Tuple",
+        "tuple": "Tuple",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

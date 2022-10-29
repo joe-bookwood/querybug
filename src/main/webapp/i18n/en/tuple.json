@@ -1,0 +1,27 @@
+{
+  "querybugApp": {
+    "tuple": {
+      "home": {
+        "title": "Tuples",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Tuple",
+        "createOrEditLabel": "Create or edit a Tuple",
+        "notFound": "No Tuples found"
+      },
+      "created": "A new Tuple is created with identifier {{ param }}",
+      "updated": "A Tuple is updated with identifier {{ param }}",
+      "deleted": "A Tuple is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Tuple {{ id }}?"
+      },
+      "detail": {
+        "title": "Tuple"
+      },
+      "id": "ID",
+      "computation": "Computation",
+      "time": "Time",
+      "calculation": "Calculation",
+      "ohlc": "Ohlc"
+    }
+  }
+}
