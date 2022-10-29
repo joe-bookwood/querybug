@@ -1,5 +1,14 @@
 # querybug
 
+This testing project is generated to discuss a problem in hibernate.
+A long native SQL query, executed in the hibernate entity manager,
+produce an empty result set, but when I execute the query in the sql console,
+the query works as expected.
+
+Here is the [Stackoverflow Question](https://stackoverflow.com/questions/74244793/native-with-query-works-in-the-sql-console-but-return-no-data-as-native-query)
+
+## Jhipster Doku
+
 This application was generated using JHipster 7.9.2, you can find documentation and help at [https://www.jhipster.tech/documentation-archive/v7.9.2](https://www.jhipster.tech/documentation-archive/v7.9.2).
 
 ## Project Structure

@@ -161,7 +161,7 @@ class CalculationServiceIT {
 
         Query withQuerySimpleSecondPart = entityManager
             .createNativeQuery(
-                "with tuple_diff as (select t.calculation_id, t.id, t.ohlc_id, t.time, t.time - lag(t.time, 1) over (order by t.time) as diff from tuple t where CALCULATION_ID = :calculationid ) select calculation_id,time from tuple_diff order by calculation_id;"
+                "with tuple_diff as (select t.calculation_id, t.id, t.ohlc_id, t.time, t.time - lag(t.time, 1) over (order by t.time) as diff from tuple t where calculation_id = :calculationid ) select calculation_id,time from tuple_diff order by calculation_id;"
             )
             .setParameter("calculationid", calculationId);
         List<Object[]> resSimpleWithSecondPart = withQuerySimpleSecondPart.getResultList();

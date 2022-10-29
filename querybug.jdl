@@ -13,11 +13,9 @@ application {
     databaseType sql
     devDatabaseType h2Disk
     dtoSuffix DTO
-    enableGradleEnterprise false
     enableHibernateCache true
     enableSwaggerCodegen false
     enableTranslation true
-    gradleEnterpriseHost ""
     jhiPrefix jhi
     jhipsterVersion "7.9.2"
     jwtSecretKey "YWYyZDE4NjQyNjlhY2YyM2JmMWI2NzVmZTdiZjQ0ZTlkN2IzYzRhZTdmYTliNzIzN2Q2NDZiN2NhYThlY2VkMzFkZWRkYWIxMzY5ZWZlNDNjM2NkYmUxNDNhMDgwOWQ5MWI2ZmVjNTcxMTQ1ZTUyYzNkNzZiY2ZmZGExZDZiNmQ="
@@ -34,7 +32,6 @@ application {
     skipUserManagement false
     testFrameworks []
     websocket false
-    withAdminUi true
   }
 
   entities Asset, Calculation, Chart, Fee, Ohlc, Pair, TimeRange, Tuple
