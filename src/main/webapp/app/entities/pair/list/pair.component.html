@@ -28,30 +28,70 @@
     <span jhiTranslate="querybugApp.pair.home.notFound">No Pairs found</span>
   </div>
 
-  <div class="table-responsive" id="entities" *ngIf="pairs && pairs.length > 0">
+  <div class="table-responsive table-entities" id="entities" *ngIf="pairs && pairs.length > 0">
     <table class="table table-striped" aria-describedby="page-heading">
       <thead>
         <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
-          <th scope="col" jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
-          <th scope="col" jhiSortBy="name"><span jhiTranslate="querybugApp.pair.name">Name</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="id">
+            <div class="d-flex">
+              <span jhiTranslate="global.field.id">ID</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="name">
+            <div class="d-flex">
+              <span jhiTranslate="querybugApp.pair.name">Name</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
           <th scope="col" jhiSortBy="altname">
-            <span jhiTranslate="querybugApp.pair.altname">Altname</span> <fa-icon icon="sort"></fa-icon>
+            <div class="d-flex">
+              <span jhiTranslate="querybugApp.pair.altname">Altname</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
           </th>
           <th scope="col" jhiSortBy="webSocketPairName">
-            <span jhiTranslate="querybugApp.pair.webSocketPairName">Web Socket Pair Name</span> <fa-icon icon="sort"></fa-icon>
+            <div class="d-flex">
+              <span jhiTranslate="querybugApp.pair.webSocketPairName">Web Socket Pair Name</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
           </th>
-          <th scope="col" jhiSortBy="lot"><span jhiTranslate="querybugApp.pair.lot">Lot</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="lot">
+            <div class="d-flex">
+              <span jhiTranslate="querybugApp.pair.lot">Lot</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
           <th scope="col" jhiSortBy="pairDecimal">
-            <span jhiTranslate="querybugApp.pair.pairDecimal">Pair Decimal</span> <fa-icon icon="sort"></fa-icon>
+            <div class="d-flex">
+              <span jhiTranslate="querybugApp.pair.pairDecimal">Pair Decimal</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
           </th>
           <th scope="col" jhiSortBy="lotDecimals">
-            <span jhiTranslate="querybugApp.pair.lotDecimals">Lot Decimals</span> <fa-icon icon="sort"></fa-icon>
+            <div class="d-flex">
+              <span jhiTranslate="querybugApp.pair.lotDecimals">Lot Decimals</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
           </th>
           <th scope="col" jhiSortBy="lotMultiplier">
-            <span jhiTranslate="querybugApp.pair.lotMultiplier">Lot Multiplier</span> <fa-icon icon="sort"></fa-icon>
+            <div class="d-flex">
+              <span jhiTranslate="querybugApp.pair.lotMultiplier">Lot Multiplier</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
           </th>
-          <th scope="col" jhiSortBy="base.id"><span jhiTranslate="querybugApp.pair.base">Base</span> <fa-icon icon="sort"></fa-icon></th>
-          <th scope="col" jhiSortBy="quote.id"><span jhiTranslate="querybugApp.pair.quote">Quote</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="base.id">
+            <div class="d-flex">
+              <span jhiTranslate="querybugApp.pair.base">Base</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="quote.id">
+            <div class="d-flex">
+              <span jhiTranslate="querybugApp.pair.quote">Quote</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
           <th scope="col"></th>
         </tr>
       </thead>
@@ -69,12 +109,12 @@
           <td>{{ pair.lotMultiplier }}</td>
           <td>
             <div *ngIf="pair.base">
-              <a [routerLink]="['/asset', pair.base.id, 'view']">{{ pair.base?.id }}</a>
+              <a [routerLink]="['/asset', pair.base.id, 'view']">{{ pair.base.id }}</a>
             </div>
           </td>
           <td>
             <div *ngIf="pair.quote">
-              <a [routerLink]="['/asset', pair.quote.id, 'view']">{{ pair.quote?.id }}</a>
+              <a [routerLink]="['/asset', pair.quote.id, 'view']">{{ pair.quote.id }}</a>
             </div>
           </td>
           <td class="text-end">

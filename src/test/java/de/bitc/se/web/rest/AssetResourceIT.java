@@ -196,7 +196,7 @@ class AssetResourceIT {
 
     @Test
     @Transactional
-    void putNewAsset() throws Exception {
+    void putExistingAsset() throws Exception {
         // Initialize the database
         assetRepository.saveAndFlush(asset);
 

@@ -29,7 +29,7 @@
         <dt><span jhiTranslate="querybugApp.calculation.chart">Chart</span></dt>
         <dd>
           <div *ngIf="calculation.chart">
-            <a [routerLink]="['/chart', calculation.chart.id, 'view']">{{ calculation.chart?.id }}</a>
+            <a [routerLink]="['/chart', calculation.chart.id, 'view']">{{ calculation.chart.id }}</a>
           </div>
         </dd>
       </dl>

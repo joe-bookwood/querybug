@@ -28,22 +28,39 @@
     <span jhiTranslate="querybugApp.calculation.home.notFound">No Calculations found</span>
   </div>
 
-  <div class="table-responsive" id="entities" *ngIf="calculations && calculations.length > 0">
+  <div class="table-responsive table-entities" id="entities" *ngIf="calculations && calculations.length > 0">
     <table class="table table-striped" aria-describedby="page-heading">
       <thead>
         <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
-          <th scope="col" jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="id">
+            <div class="d-flex">
+              <span jhiTranslate="global.field.id">ID</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
           <th scope="col" jhiSortBy="name">
-            <span jhiTranslate="querybugApp.calculation.name">Name</span> <fa-icon icon="sort"></fa-icon>
+            <div class="d-flex">
+              <span jhiTranslate="querybugApp.calculation.name">Name</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
           </th>
           <th scope="col" jhiSortBy="last">
-            <span jhiTranslate="querybugApp.calculation.last">Last</span> <fa-icon icon="sort"></fa-icon>
+            <div class="d-flex">
+              <span jhiTranslate="querybugApp.calculation.last">Last</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
           </th>
           <th scope="col" jhiSortBy="disabled">
-            <span jhiTranslate="querybugApp.calculation.disabled">Disabled</span> <fa-icon icon="sort"></fa-icon>
+            <div class="d-flex">
+              <span jhiTranslate="querybugApp.calculation.disabled">Disabled</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
           </th>
           <th scope="col" jhiSortBy="chart.id">
-            <span jhiTranslate="querybugApp.calculation.chart">Chart</span> <fa-icon icon="sort"></fa-icon>
+            <div class="d-flex">
+              <span jhiTranslate="querybugApp.calculation.chart">Chart</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
           </th>
           <th scope="col"></th>
         </tr>
@@ -58,7 +75,7 @@
           <td>{{ calculation.disabled }}</td>
           <td>
             <div *ngIf="calculation.chart">
-              <a [routerLink]="['/chart', calculation.chart.id, 'view']">{{ calculation.chart?.id }}</a>
+              <a [routerLink]="['/chart', calculation.chart.id, 'view']">{{ calculation.chart.id }}</a>
             </div>
           </td>
           <td class="text-end">

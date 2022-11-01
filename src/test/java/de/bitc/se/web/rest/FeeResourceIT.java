@@ -157,7 +157,7 @@ class FeeResourceIT {
 
     @Test
     @Transactional
-    void putNewFee() throws Exception {
+    void putExistingFee() throws Exception {
         // Initialize the database
         feeRepository.saveAndFlush(fee);
 

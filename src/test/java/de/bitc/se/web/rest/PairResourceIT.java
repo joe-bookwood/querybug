@@ -224,7 +224,7 @@ class PairResourceIT {
 
     @Test
     @Transactional
-    void putNewPair() throws Exception {
+    void putExistingPair() throws Exception {
         // Initialize the database
         pairRepository.saveAndFlush(pair);
 

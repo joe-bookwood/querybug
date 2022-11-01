@@ -33,13 +33,13 @@
         <dt><span jhiTranslate="querybugApp.chart.pair">Pair</span></dt>
         <dd>
           <div *ngIf="chart.pair">
-            <a [routerLink]="['/pair', chart.pair.id, 'view']">{{ chart.pair?.id }}</a>
+            <a [routerLink]="['/pair', chart.pair.id, 'view']">{{ chart.pair.id }}</a>
           </div>
         </dd>
         <dt><span jhiTranslate="querybugApp.chart.timeRange">Time Range</span></dt>
         <dd>
           <div *ngIf="chart.timeRange">
-            <a [routerLink]="['/time-range', chart.timeRange.id, 'view']">{{ chart.timeRange?.id }}</a>
+            <a [routerLink]="['/time-range', chart.timeRange.id, 'view']">{{ chart.timeRange.id }}</a>
           </div>
         </dd>
       </dl>

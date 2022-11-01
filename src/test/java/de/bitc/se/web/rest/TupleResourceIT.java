@@ -162,7 +162,7 @@ class TupleResourceIT {
 
     @Test
     @Transactional
-    void putNewTuple() throws Exception {
+    void putExistingTuple() throws Exception {
         // Initialize the database
         tupleRepository.saveAndFlush(tuple);
 

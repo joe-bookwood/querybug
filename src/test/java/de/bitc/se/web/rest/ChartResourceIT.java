@@ -214,7 +214,7 @@ class ChartResourceIT {
 
     @Test
     @Transactional
-    void putNewChart() throws Exception {
+    void putExistingChart() throws Exception {
         // Initialize the database
         chartRepository.saveAndFlush(chart);
 

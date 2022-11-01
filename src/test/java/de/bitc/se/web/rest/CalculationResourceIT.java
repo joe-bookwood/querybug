@@ -187,7 +187,7 @@ class CalculationResourceIT {
 
     @Test
     @Transactional
-    void putNewCalculation() throws Exception {
+    void putExistingCalculation() throws Exception {
         // Initialize the database
         calculationRepository.saveAndFlush(calculation);
 
