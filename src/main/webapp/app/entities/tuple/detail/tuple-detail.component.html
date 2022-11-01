@@ -25,13 +25,13 @@
         <dt><span jhiTranslate="querybugApp.tuple.calculation">Calculation</span></dt>
         <dd>
           <div *ngIf="tuple.calculation">
-            <a [routerLink]="['/calculation', tuple.calculation.id, 'view']">{{ tuple.calculation?.id }}</a>
+            <a [routerLink]="['/calculation', tuple.calculation.id, 'view']">{{ tuple.calculation.id }}</a>
           </div>
         </dd>
         <dt><span jhiTranslate="querybugApp.tuple.ohlc">Ohlc</span></dt>
         <dd>
           <div *ngIf="tuple.ohlc">
-            <a [routerLink]="['/ohlc', tuple.ohlc.id, 'view']">{{ tuple.ohlc?.id }}</a>
+            <a [routerLink]="['/ohlc', tuple.ohlc.id, 'view']">{{ tuple.ohlc.id }}</a>
           </div>
         </dd>
       </dl>

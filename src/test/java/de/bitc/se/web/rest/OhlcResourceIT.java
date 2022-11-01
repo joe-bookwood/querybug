@@ -235,7 +235,7 @@ class OhlcResourceIT {
 
     @Test
     @Transactional
-    void putNewOhlc() throws Exception {
+    void putExistingOhlc() throws Exception {
         // Initialize the database
         ohlcRepository.saveAndFlush(ohlc);
 

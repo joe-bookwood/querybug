@@ -45,13 +45,13 @@
         <dt><span jhiTranslate="querybugApp.pair.base">Base</span></dt>
         <dd>
           <div *ngIf="pair.base">
-            <a [routerLink]="['/asset', pair.base.id, 'view']">{{ pair.base?.id }}</a>
+            <a [routerLink]="['/asset', pair.base.id, 'view']">{{ pair.base.id }}</a>
           </div>
         </dd>
         <dt><span jhiTranslate="querybugApp.pair.quote">Quote</span></dt>
         <dd>
           <div *ngIf="pair.quote">
-            <a [routerLink]="['/asset', pair.quote.id, 'view']">{{ pair.quote?.id }}</a>
+            <a [routerLink]="['/asset', pair.quote.id, 'view']">{{ pair.quote.id }}</a>
           </div>
         </dd>
       </dl>

@@ -28,16 +28,34 @@
     <span jhiTranslate="querybugApp.fee.home.notFound">No Fees found</span>
   </div>
 
-  <div class="table-responsive" id="entities" *ngIf="fees && fees.length > 0">
+  <div class="table-responsive table-entities" id="entities" *ngIf="fees && fees.length > 0">
     <table class="table table-striped" aria-describedby="page-heading">
       <thead>
         <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
-          <th scope="col" jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
-          <th scope="col" jhiSortBy="volume"><span jhiTranslate="querybugApp.fee.volume">Volume</span> <fa-icon icon="sort"></fa-icon></th>
-          <th scope="col" jhiSortBy="percent">
-            <span jhiTranslate="querybugApp.fee.percent">Percent</span> <fa-icon icon="sort"></fa-icon>
+          <th scope="col" jhiSortBy="id">
+            <div class="d-flex">
+              <span jhiTranslate="global.field.id">ID</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
           </th>
-          <th scope="col" jhiSortBy="pair.id"><span jhiTranslate="querybugApp.fee.pair">Pair</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="volume">
+            <div class="d-flex">
+              <span jhiTranslate="querybugApp.fee.volume">Volume</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="percent">
+            <div class="d-flex">
+              <span jhiTranslate="querybugApp.fee.percent">Percent</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="pair.id">
+            <div class="d-flex">
+              <span jhiTranslate="querybugApp.fee.pair">Pair</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
           <th scope="col"></th>
         </tr>
       </thead>
@@ -50,7 +68,7 @@
           <td>{{ fee.percent }}</td>
           <td>
             <div *ngIf="fee.pair">
-              <a [routerLink]="['/pair', fee.pair.id, 'view']">{{ fee.pair?.id }}</a>
+              <a [routerLink]="['/pair', fee.pair.id, 'view']">{{ fee.pair.id }}</a>
             </div>
           </td>
           <td class="text-end">

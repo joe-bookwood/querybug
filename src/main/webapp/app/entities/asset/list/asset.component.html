@@ -28,26 +28,51 @@
     <span jhiTranslate="querybugApp.asset.home.notFound">No Assets found</span>
   </div>
 
-  <div class="table-responsive" id="entities" *ngIf="assets && assets.length > 0">
+  <div class="table-responsive table-entities" id="entities" *ngIf="assets && assets.length > 0">
     <table class="table table-striped" aria-describedby="page-heading">
       <thead>
         <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
-          <th scope="col" jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
-          <th scope="col" jhiSortBy="name"><span jhiTranslate="querybugApp.asset.name">Name</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="id">
+            <div class="d-flex">
+              <span jhiTranslate="global.field.id">ID</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="name">
+            <div class="d-flex">
+              <span jhiTranslate="querybugApp.asset.name">Name</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
           <th scope="col" jhiSortBy="assetClass">
-            <span jhiTranslate="querybugApp.asset.assetClass">Asset Class</span> <fa-icon icon="sort"></fa-icon>
+            <div class="d-flex">
+              <span jhiTranslate="querybugApp.asset.assetClass">Asset Class</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
           </th>
           <th scope="col" jhiSortBy="alternativeName">
-            <span jhiTranslate="querybugApp.asset.alternativeName">Alternative Name</span> <fa-icon icon="sort"></fa-icon>
+            <div class="d-flex">
+              <span jhiTranslate="querybugApp.asset.alternativeName">Alternative Name</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
           </th>
           <th scope="col" jhiSortBy="decimals">
-            <span jhiTranslate="querybugApp.asset.decimals">Decimals</span> <fa-icon icon="sort"></fa-icon>
+            <div class="d-flex">
+              <span jhiTranslate="querybugApp.asset.decimals">Decimals</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
           </th>
           <th scope="col" jhiSortBy="displayDecimals">
-            <span jhiTranslate="querybugApp.asset.displayDecimals">Display Decimals</span> <fa-icon icon="sort"></fa-icon>
+            <div class="d-flex">
+              <span jhiTranslate="querybugApp.asset.displayDecimals">Display Decimals</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
           </th>
           <th scope="col" jhiSortBy="lastChecked">
-            <span jhiTranslate="querybugApp.asset.lastChecked">Last Checked</span> <fa-icon icon="sort"></fa-icon>
+            <div class="d-flex">
+              <span jhiTranslate="querybugApp.asset.lastChecked">Last Checked</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
           </th>
           <th scope="col"></th>
         </tr>

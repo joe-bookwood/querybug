@@ -28,19 +28,40 @@
     <span jhiTranslate="querybugApp.tuple.home.notFound">No Tuples found</span>
   </div>
 
-  <div class="table-responsive" id="entities" *ngIf="tuples && tuples.length > 0">
+  <div class="table-responsive table-entities" id="entities" *ngIf="tuples && tuples.length > 0">
     <table class="table table-striped" aria-describedby="page-heading">
       <thead>
         <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
-          <th scope="col" jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="id">
+            <div class="d-flex">
+              <span jhiTranslate="global.field.id">ID</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
           <th scope="col" jhiSortBy="computation">
-            <span jhiTranslate="querybugApp.tuple.computation">Computation</span> <fa-icon icon="sort"></fa-icon>
+            <div class="d-flex">
+              <span jhiTranslate="querybugApp.tuple.computation">Computation</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
           </th>
-          <th scope="col" jhiSortBy="time"><span jhiTranslate="querybugApp.tuple.time">Time</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="time">
+            <div class="d-flex">
+              <span jhiTranslate="querybugApp.tuple.time">Time</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
           <th scope="col" jhiSortBy="calculation.id">
-            <span jhiTranslate="querybugApp.tuple.calculation">Calculation</span> <fa-icon icon="sort"></fa-icon>
+            <div class="d-flex">
+              <span jhiTranslate="querybugApp.tuple.calculation">Calculation</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
           </th>
-          <th scope="col" jhiSortBy="ohlc.id"><span jhiTranslate="querybugApp.tuple.ohlc">Ohlc</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="ohlc.id">
+            <div class="d-flex">
+              <span jhiTranslate="querybugApp.tuple.ohlc">Ohlc</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
           <th scope="col"></th>
         </tr>
       </thead>
@@ -53,12 +74,12 @@
           <td>{{ tuple.time | formatMediumDatetime }}</td>
           <td>
             <div *ngIf="tuple.calculation">
-              <a [routerLink]="['/calculation', tuple.calculation.id, 'view']">{{ tuple.calculation?.id }}</a>
+              <a [routerLink]="['/calculation', tuple.calculation.id, 'view']">{{ tuple.calculation.id }}</a>
             </div>
           </td>
           <td>
             <div *ngIf="tuple.ohlc">
-              <a [routerLink]="['/ohlc', tuple.ohlc.id, 'view']">{{ tuple.ohlc?.id }}</a>
+              <a [routerLink]="['/ohlc', tuple.ohlc.id, 'view']">{{ tuple.ohlc.id }}</a>
             </div>
           </td>
           <td class="text-end">

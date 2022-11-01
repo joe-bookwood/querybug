@@ -28,22 +28,51 @@
     <span jhiTranslate="querybugApp.chart.home.notFound">No Charts found</span>
   </div>
 
-  <div class="table-responsive" id="entities" *ngIf="charts && charts.length > 0">
+  <div class="table-responsive table-entities" id="entities" *ngIf="charts && charts.length > 0">
     <table class="table table-striped" aria-describedby="page-heading">
       <thead>
         <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
-          <th scope="col" jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
-          <th scope="col" jhiSortBy="name"><span jhiTranslate="querybugApp.chart.name">Name</span> <fa-icon icon="sort"></fa-icon></th>
-          <th scope="col" jhiSortBy="last"><span jhiTranslate="querybugApp.chart.last">Last</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="id">
+            <div class="d-flex">
+              <span jhiTranslate="global.field.id">ID</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="name">
+            <div class="d-flex">
+              <span jhiTranslate="querybugApp.chart.name">Name</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="last">
+            <div class="d-flex">
+              <span jhiTranslate="querybugApp.chart.last">Last</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
           <th scope="col" jhiSortBy="maxCount">
-            <span jhiTranslate="querybugApp.chart.maxCount">Max Count</span> <fa-icon icon="sort"></fa-icon>
+            <div class="d-flex">
+              <span jhiTranslate="querybugApp.chart.maxCount">Max Count</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
           </th>
           <th scope="col" jhiSortBy="disabled">
-            <span jhiTranslate="querybugApp.chart.disabled">Disabled</span> <fa-icon icon="sort"></fa-icon>
+            <div class="d-flex">
+              <span jhiTranslate="querybugApp.chart.disabled">Disabled</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
           </th>
-          <th scope="col" jhiSortBy="pair.id"><span jhiTranslate="querybugApp.chart.pair">Pair</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="pair.id">
+            <div class="d-flex">
+              <span jhiTranslate="querybugApp.chart.pair">Pair</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
           <th scope="col" jhiSortBy="timeRange.id">
-            <span jhiTranslate="querybugApp.chart.timeRange">Time Range</span> <fa-icon icon="sort"></fa-icon>
+            <div class="d-flex">
+              <span jhiTranslate="querybugApp.chart.timeRange">Time Range</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
           </th>
           <th scope="col"></th>
         </tr>
@@ -59,12 +88,12 @@
           <td>{{ chart.disabled }}</td>
           <td>
             <div *ngIf="chart.pair">
-              <a [routerLink]="['/pair', chart.pair.id, 'view']">{{ chart.pair?.id }}</a>
+              <a [routerLink]="['/pair', chart.pair.id, 'view']">{{ chart.pair.id }}</a>
             </div>
           </td>
           <td>
             <div *ngIf="chart.timeRange">
-              <a [routerLink]="['/time-range', chart.timeRange.id, 'view']">{{ chart.timeRange?.id }}</a>
+              <a [routerLink]="['/time-range', chart.timeRange.id, 'view']">{{ chart.timeRange.id }}</a>
             </div>
           </td>
           <td class="text-end">

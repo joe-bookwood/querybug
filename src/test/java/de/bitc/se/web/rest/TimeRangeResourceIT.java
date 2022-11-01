@@ -176,7 +176,7 @@ class TimeRangeResourceIT {
 
     @Test
     @Transactional
-    void putNewTimeRange() throws Exception {
+    void putExistingTimeRange() throws Exception {
         // Initialize the database
         timeRangeRepository.saveAndFlush(timeRange);
 

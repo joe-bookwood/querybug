@@ -28,23 +28,70 @@
     <span jhiTranslate="querybugApp.ohlc.home.notFound">No Ohlcs found</span>
   </div>
 
-  <div class="table-responsive" id="entities" *ngIf="ohlcs && ohlcs.length > 0">
+  <div class="table-responsive table-entities" id="entities" *ngIf="ohlcs && ohlcs.length > 0">
     <table class="table table-striped" aria-describedby="page-heading">
       <thead>
         <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
-          <th scope="col" jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
-          <th scope="col" jhiSortBy="time"><span jhiTranslate="querybugApp.ohlc.time">Time</span> <fa-icon icon="sort"></fa-icon></th>
-          <th scope="col" jhiSortBy="open"><span jhiTranslate="querybugApp.ohlc.open">Open</span> <fa-icon icon="sort"></fa-icon></th>
-          <th scope="col" jhiSortBy="high"><span jhiTranslate="querybugApp.ohlc.high">High</span> <fa-icon icon="sort"></fa-icon></th>
-          <th scope="col" jhiSortBy="low"><span jhiTranslate="querybugApp.ohlc.low">Low</span> <fa-icon icon="sort"></fa-icon></th>
-          <th scope="col" jhiSortBy="close"><span jhiTranslate="querybugApp.ohlc.close">Close</span> <fa-icon icon="sort"></fa-icon></th>
-          <th scope="col" jhiSortBy="volumeWeightedAveragePrice">
-            <span jhiTranslate="querybugApp.ohlc.volumeWeightedAveragePrice">Volume Weighted Average Price</span>
-            <fa-icon icon="sort"></fa-icon>
+          <th scope="col" jhiSortBy="id">
+            <div class="d-flex">
+              <span jhiTranslate="global.field.id">ID</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
           </th>
-          <th scope="col" jhiSortBy="volume"><span jhiTranslate="querybugApp.ohlc.volume">Volume</span> <fa-icon icon="sort"></fa-icon></th>
-          <th scope="col" jhiSortBy="count"><span jhiTranslate="querybugApp.ohlc.count">Count</span> <fa-icon icon="sort"></fa-icon></th>
-          <th scope="col" jhiSortBy="chart.id"><span jhiTranslate="querybugApp.ohlc.chart">Chart</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="time">
+            <div class="d-flex">
+              <span jhiTranslate="querybugApp.ohlc.time">Time</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="open">
+            <div class="d-flex">
+              <span jhiTranslate="querybugApp.ohlc.open">Open</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="high">
+            <div class="d-flex">
+              <span jhiTranslate="querybugApp.ohlc.high">High</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="low">
+            <div class="d-flex">
+              <span jhiTranslate="querybugApp.ohlc.low">Low</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="close">
+            <div class="d-flex">
+              <span jhiTranslate="querybugApp.ohlc.close">Close</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="volumeWeightedAveragePrice">
+            <div class="d-flex">
+              <span jhiTranslate="querybugApp.ohlc.volumeWeightedAveragePrice">Volume Weighted Average Price</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="volume">
+            <div class="d-flex">
+              <span jhiTranslate="querybugApp.ohlc.volume">Volume</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="count">
+            <div class="d-flex">
+              <span jhiTranslate="querybugApp.ohlc.count">Count</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="chart.id">
+            <div class="d-flex">
+              <span jhiTranslate="querybugApp.ohlc.chart">Chart</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
           <th scope="col"></th>
         </tr>
       </thead>
@@ -63,7 +110,7 @@
           <td>{{ ohlc.count }}</td>
           <td>
             <div *ngIf="ohlc.chart">
-              <a [routerLink]="['/chart', ohlc.chart.id, 'view']">{{ ohlc.chart?.id }}</a>
+              <a [routerLink]="['/chart', ohlc.chart.id, 'view']">{{ ohlc.chart.id }}</a>
             </div>
           </td>
           <td class="text-end">
