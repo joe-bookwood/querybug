@@ -1,0 +1,125 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-pair-heading" data-cy="PairCreateUpdateHeading" jhiTranslate="querybugApp.pair.home.createOrEditLabel">
+        Create or edit a Pair
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" *ngIf="editForm.controls.id.value !== null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="querybugApp.pair.name" for="field_name">Name</label>
+          <input type="text" class="form-control" name="name" id="field_name" data-cy="name" formControlName="name" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="querybugApp.pair.altname" for="field_altname">Altname</label>
+          <input type="text" class="form-control" name="altname" id="field_altname" data-cy="altname" formControlName="altname" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="querybugApp.pair.webSocketPairName" for="field_webSocketPairName"
+            >Web Socket Pair Name</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="webSocketPairName"
+            id="field_webSocketPairName"
+            data-cy="webSocketPairName"
+            formControlName="webSocketPairName"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="querybugApp.pair.lot" for="field_lot">Lot</label>
+          <input type="text" class="form-control" name="lot" id="field_lot" data-cy="lot" formControlName="lot" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="querybugApp.pair.pairDecimal" for="field_pairDecimal">Pair Decimal</label>
+          <input
+            type="number"
+            class="form-control"
+            name="pairDecimal"
+            id="field_pairDecimal"
+            data-cy="pairDecimal"
+            formControlName="pairDecimal"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="querybugApp.pair.lotDecimals" for="field_lotDecimals">Lot Decimals</label>
+          <input
+            type="number"
+            class="form-control"
+            name="lotDecimals"
+            id="field_lotDecimals"
+            data-cy="lotDecimals"
+            formControlName="lotDecimals"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="querybugApp.pair.lotMultiplier" for="field_lotMultiplier">Lot Multiplier</label>
+          <input
+            type="number"
+            class="form-control"
+            name="lotMultiplier"
+            id="field_lotMultiplier"
+            data-cy="lotMultiplier"
+            formControlName="lotMultiplier"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="querybugApp.pair.base" for="field_base">Base</label>
+          <select class="form-control" id="field_base" data-cy="base" name="base" formControlName="base" [compareWith]="compareAsset">
+            <option *ngIf="!editForm.get('base')!.value" [ngValue]="null" selected></option>
+            <option [ngValue]="assetOption" *ngFor="let assetOption of assetsSharedCollection">{{ assetOption.id }}</option>
+          </select>
+        </div>
+        <div *ngIf="editForm.get(['base'])!.invalid && (editForm.get(['base'])!.dirty || editForm.get(['base'])!.touched)">
+          <small class="form-text text-danger" *ngIf="editForm.get(['base'])?.errors?.required" jhiTranslate="entity.validation.required">
+            This field is required.
+          </small>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="querybugApp.pair.quote" for="field_quote">Quote</label>
+          <select class="form-control" id="field_quote" data-cy="quote" name="quote" formControlName="quote" [compareWith]="compareAsset">
+            <option *ngIf="!editForm.get('quote')!.value" [ngValue]="null" selected></option>
+            <option [ngValue]="assetOption" *ngFor="let assetOption of assetsSharedCollection">{{ assetOption.id }}</option>
+          </select>
+        </div>
+        <div *ngIf="editForm.get(['quote'])!.invalid && (editForm.get(['quote'])!.dirty || editForm.get(['quote'])!.touched)">
+          <small class="form-text text-danger" *ngIf="editForm.get(['quote'])?.errors?.required" jhiTranslate="entity.validation.required">
+            This field is required.
+          </small>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

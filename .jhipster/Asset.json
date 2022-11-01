@@ -1,0 +1,40 @@
+{
+  "applications": ["querybug"],
+  "changelogDate": "20221025074314",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "asset",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "assetClass",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "alternativeName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "decimals",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "displayDecimals",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "lastChecked",
+      "fieldType": "ZonedDateTime"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Asset",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [],
+  "service": "no"
+}

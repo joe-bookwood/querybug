@@ -1,0 +1,91 @@
+<div>
+  <h2 id="page-heading" data-cy="OhlcHeading">
+    <span jhiTranslate="querybugApp.ohlc.home.title">Ohlcs</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="querybugApp.ohlc.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-ohlc"
+        [routerLink]="['/ohlc/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="querybugApp.ohlc.home.createLabel"> Create a new Ohlc </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="ohlcs?.length === 0">
+    <span jhiTranslate="querybugApp.ohlc.home.notFound">No Ohlcs found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="ohlcs && ohlcs.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="time"><span jhiTranslate="querybugApp.ohlc.time">Time</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="open"><span jhiTranslate="querybugApp.ohlc.open">Open</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="high"><span jhiTranslate="querybugApp.ohlc.high">High</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="low"><span jhiTranslate="querybugApp.ohlc.low">Low</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="close"><span jhiTranslate="querybugApp.ohlc.close">Close</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="volumeWeightedAveragePrice">
+            <span jhiTranslate="querybugApp.ohlc.volumeWeightedAveragePrice">Volume Weighted Average Price</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="volume"><span jhiTranslate="querybugApp.ohlc.volume">Volume</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="count"><span jhiTranslate="querybugApp.ohlc.count">Count</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="chart.id"><span jhiTranslate="querybugApp.ohlc.chart">Chart</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let ohlc of ohlcs; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/ohlc', ohlc.id, 'view']">{{ ohlc.id }}</a>
+          </td>
+          <td>{{ ohlc.time | formatMediumDatetime }}</td>
+          <td>{{ ohlc.open }}</td>
+          <td>{{ ohlc.high }}</td>
+          <td>{{ ohlc.low }}</td>
+          <td>{{ ohlc.close }}</td>
+          <td>{{ ohlc.volumeWeightedAveragePrice }}</td>
+          <td>{{ ohlc.volume }}</td>
+          <td>{{ ohlc.count }}</td>
+          <td>
+            <div *ngIf="ohlc.chart">
+              <a [routerLink]="['/chart', ohlc.chart.id, 'view']">{{ ohlc.chart?.id }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button type="submit" [routerLink]="['/ohlc', ohlc.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button type="submit" [routerLink]="['/ohlc', ohlc.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(ohlc)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

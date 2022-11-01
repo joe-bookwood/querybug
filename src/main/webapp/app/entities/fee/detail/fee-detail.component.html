@@ -1,0 +1,42 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="fee">
+      <h2 data-cy="feeDetailsHeading"><span jhiTranslate="querybugApp.fee.detail.title">Fee</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ fee.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="querybugApp.fee.volume">Volume</span></dt>
+        <dd>
+          <span>{{ fee.volume }}</span>
+        </dd>
+        <dt><span jhiTranslate="querybugApp.fee.percent">Percent</span></dt>
+        <dd>
+          <span>{{ fee.percent }}</span>
+        </dd>
+        <dt><span jhiTranslate="querybugApp.fee.pair">Pair</span></dt>
+        <dd>
+          <div *ngIf="fee.pair">
+            <a [routerLink]="['/pair', fee.pair.id, 'view']">{{ fee.pair?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/fee', fee.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

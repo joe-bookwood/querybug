@@ -1,0 +1,33 @@
+{
+  "querybugApp": {
+    "pair": {
+      "home": {
+        "title": "Pairs",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Pair",
+        "createOrEditLabel": "Create or edit a Pair",
+        "notFound": "No Pairs found"
+      },
+      "created": "A new Pair is created with identifier {{ param }}",
+      "updated": "A Pair is updated with identifier {{ param }}",
+      "deleted": "A Pair is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Pair {{ id }}?"
+      },
+      "detail": {
+        "title": "Pair"
+      },
+      "id": "ID",
+      "name": "Name",
+      "altname": "Altname",
+      "webSocketPairName": "Web Socket Pair Name",
+      "lot": "Lot",
+      "pairDecimal": "Pair Decimal",
+      "lotDecimals": "Lot Decimals",
+      "lotMultiplier": "Lot Multiplier",
+      "fees": "Fees",
+      "base": "Base",
+      "quote": "Quote"
+    }
+  }
+}

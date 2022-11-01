@@ -1,0 +1,31 @@
+{
+  "applications": ["querybug"],
+  "changelogDate": "20221025074614",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "fee",
+  "fields": [
+    {
+      "fieldName": "volume",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "percent",
+      "fieldType": "BigDecimal"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Fee",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "pair",
+      "otherEntityRelationshipName": "fees",
+      "relationshipName": "pair",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "no"
+}

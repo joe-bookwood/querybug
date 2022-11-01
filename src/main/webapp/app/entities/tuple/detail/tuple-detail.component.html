@@ -1,0 +1,48 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="tuple">
+      <h2 data-cy="tupleDetailsHeading"><span jhiTranslate="querybugApp.tuple.detail.title">Tuple</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ tuple.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="querybugApp.tuple.computation">Computation</span></dt>
+        <dd>
+          <span>{{ tuple.computation }}</span>
+        </dd>
+        <dt><span jhiTranslate="querybugApp.tuple.time">Time</span></dt>
+        <dd>
+          <span>{{ tuple.time | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="querybugApp.tuple.calculation">Calculation</span></dt>
+        <dd>
+          <div *ngIf="tuple.calculation">
+            <a [routerLink]="['/calculation', tuple.calculation.id, 'view']">{{ tuple.calculation?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="querybugApp.tuple.ohlc">Ohlc</span></dt>
+        <dd>
+          <div *ngIf="tuple.ohlc">
+            <a [routerLink]="['/ohlc', tuple.ohlc.id, 'view']">{{ tuple.ohlc?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/tuple', tuple.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

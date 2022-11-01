@@ -1,0 +1,27 @@
+{
+  "querybugApp": {
+    "timeRange": {
+      "home": {
+        "title": "Time Ranges",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Time Range",
+        "createOrEditLabel": "Create or edit a Time Range",
+        "notFound": "No Time Ranges found"
+      },
+      "created": "A new Time Range is created with identifier {{ param }}",
+      "updated": "A Time Range is updated with identifier {{ param }}",
+      "deleted": "A Time Range is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Time Range {{ id }}?"
+      },
+      "detail": {
+        "title": "Time Range"
+      },
+      "id": "ID",
+      "name": "Name",
+      "rangeSize": "Range Size",
+      "duration": "Duration",
+      "description": "Description"
+    }
+  }
+}

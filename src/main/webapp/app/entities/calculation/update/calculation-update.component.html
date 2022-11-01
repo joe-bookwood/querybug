@@ -1,0 +1,76 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-calculation-heading"
+        data-cy="CalculationCreateUpdateHeading"
+        jhiTranslate="querybugApp.calculation.home.createOrEditLabel"
+      >
+        Create or edit a Calculation
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" *ngIf="editForm.controls.id.value !== null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="querybugApp.calculation.name" for="field_name">Name</label>
+          <input type="text" class="form-control" name="name" id="field_name" data-cy="name" formControlName="name" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="querybugApp.calculation.last" for="field_last">Last</label>
+          <div class="d-flex">
+            <input
+              id="field_last"
+              data-cy="last"
+              type="datetime-local"
+              class="form-control"
+              name="last"
+              formControlName="last"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="querybugApp.calculation.disabled" for="field_disabled">Disabled</label>
+          <input type="checkbox" class="form-check" name="disabled" id="field_disabled" data-cy="disabled" formControlName="disabled" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="querybugApp.calculation.chart" for="field_chart">Chart</label>
+          <select class="form-control" id="field_chart" data-cy="chart" name="chart" formControlName="chart" [compareWith]="compareChart">
+            <option *ngIf="!editForm.get('chart')!.value" [ngValue]="null" selected></option>
+            <option [ngValue]="chartOption" *ngFor="let chartOption of chartsSharedCollection">{{ chartOption.id }}</option>
+          </select>
+        </div>
+        <div *ngIf="editForm.get(['chart'])!.invalid && (editForm.get(['chart'])!.dirty || editForm.get(['chart'])!.touched)">
+          <small class="form-text text-danger" *ngIf="editForm.get(['chart'])?.errors?.required" jhiTranslate="entity.validation.required">
+            This field is required.
+          </small>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

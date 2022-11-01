@@ -1,0 +1,101 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-chart-heading" data-cy="ChartCreateUpdateHeading" jhiTranslate="querybugApp.chart.home.createOrEditLabel">
+        Create or edit a Chart
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" *ngIf="editForm.controls.id.value !== null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="querybugApp.chart.name" for="field_name">Name</label>
+          <input type="text" class="form-control" name="name" id="field_name" data-cy="name" formControlName="name" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="querybugApp.chart.last" for="field_last">Last</label>
+          <div class="d-flex">
+            <input
+              id="field_last"
+              data-cy="last"
+              type="datetime-local"
+              class="form-control"
+              name="last"
+              formControlName="last"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="querybugApp.chart.maxCount" for="field_maxCount">Max Count</label>
+          <input type="number" class="form-control" name="maxCount" id="field_maxCount" data-cy="maxCount" formControlName="maxCount" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="querybugApp.chart.disabled" for="field_disabled">Disabled</label>
+          <input type="checkbox" class="form-check" name="disabled" id="field_disabled" data-cy="disabled" formControlName="disabled" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="querybugApp.chart.pair" for="field_pair">Pair</label>
+          <select class="form-control" id="field_pair" data-cy="pair" name="pair" formControlName="pair" [compareWith]="comparePair">
+            <option *ngIf="!editForm.get('pair')!.value" [ngValue]="null" selected></option>
+            <option [ngValue]="pairOption" *ngFor="let pairOption of pairsSharedCollection">{{ pairOption.id }}</option>
+          </select>
+        </div>
+        <div *ngIf="editForm.get(['pair'])!.invalid && (editForm.get(['pair'])!.dirty || editForm.get(['pair'])!.touched)">
+          <small class="form-text text-danger" *ngIf="editForm.get(['pair'])?.errors?.required" jhiTranslate="entity.validation.required">
+            This field is required.
+          </small>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="querybugApp.chart.timeRange" for="field_timeRange">Time Range</label>
+          <select
+            class="form-control"
+            id="field_timeRange"
+            data-cy="timeRange"
+            name="timeRange"
+            formControlName="timeRange"
+            [compareWith]="compareTimeRange"
+          >
+            <option *ngIf="!editForm.get('timeRange')!.value" [ngValue]="null" selected></option>
+            <option [ngValue]="timeRangeOption" *ngFor="let timeRangeOption of timeRangesSharedCollection">{{ timeRangeOption.id }}</option>
+          </select>
+        </div>
+        <div *ngIf="editForm.get(['timeRange'])!.invalid && (editForm.get(['timeRange'])!.dirty || editForm.get(['timeRange'])!.touched)">
+          <small
+            class="form-text text-danger"
+            *ngIf="editForm.get(['timeRange'])?.errors?.required"
+            jhiTranslate="entity.validation.required"
+          >
+            This field is required.
+          </small>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,32 @@
+{
+  "applications": ["querybug"],
+  "changelogDate": "20221025074914",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "time_range",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "rangeSize",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "duration",
+      "fieldType": "Duration"
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "TimeRange",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [],
+  "service": "no"
+}

@@ -1,0 +1,56 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="chart">
+      <h2 data-cy="chartDetailsHeading"><span jhiTranslate="querybugApp.chart.detail.title">Chart</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ chart.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="querybugApp.chart.name">Name</span></dt>
+        <dd>
+          <span>{{ chart.name }}</span>
+        </dd>
+        <dt><span jhiTranslate="querybugApp.chart.last">Last</span></dt>
+        <dd>
+          <span>{{ chart.last | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="querybugApp.chart.maxCount">Max Count</span></dt>
+        <dd>
+          <span>{{ chart.maxCount }}</span>
+        </dd>
+        <dt><span jhiTranslate="querybugApp.chart.disabled">Disabled</span></dt>
+        <dd>
+          <span>{{ chart.disabled }}</span>
+        </dd>
+        <dt><span jhiTranslate="querybugApp.chart.pair">Pair</span></dt>
+        <dd>
+          <div *ngIf="chart.pair">
+            <a [routerLink]="['/pair', chart.pair.id, 'view']">{{ chart.pair?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="querybugApp.chart.timeRange">Time Range</span></dt>
+        <dd>
+          <div *ngIf="chart.timeRange">
+            <a [routerLink]="['/time-range', chart.timeRange.id, 'view']">{{ chart.timeRange?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/chart', chart.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>
