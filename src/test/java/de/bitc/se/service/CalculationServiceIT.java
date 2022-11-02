@@ -105,56 +105,6 @@ class CalculationServiceIT {
     }
 
     @Test
-    @Disabled
-    public void testingTest() throws IOException {
-        // init test data
-        String json = IOUtils.toString(
-            Objects.requireNonNull(this.getClass().getResourceAsStream("/json/broken-data.json")),
-            StandardCharsets.UTF_8
-        );
-        assertNotNull(json);
-
-        CalculationJsonTestData testData = objectMapper.readValue(json, CalculationJsonTestData.class);
-        assertNotNull(testData);
-
-        testData
-            .getOhlcs()
-            .stream()
-            .sorted(Comparator.comparing(Ohlc::getTime))
-            .forEach(ohlc -> {
-                ohlc.setId(null);
-                ohlc.setChart(chart);
-                Ohlc saved = ohlcRepository.saveAndFlush(ohlc);
-                ohlcs.put(saved.getTime(), saved);
-            });
-        testData
-            .getTuples()
-            .stream()
-            .sorted(Comparator.comparing(Tuple::getTime))
-            .forEach(t -> {
-                Ohlc ohlc = ohlcs.get(t.getTime());
-                t.setId(null);
-                t.setOhlc(ohlc);
-                t.setCalculation(calculation);
-                tupleRepository.saveAndFlush(t);
-            });
-        Long calculationId = calculation.getId(); // This is the Id of the calculation
-
-        Query impossibleJoin = entityManager
-            .createNativeQuery(
-                "with params as (select ca.id as ca_id, chart_id, range_size, range_size * interval '1' minute as size from calculation ca inner join chart c on c.id = ca.chart_id inner join time_range tr on tr.id = c.time_range_id where ca.id = :calculationid)," +
-                " tuple_diff as (select t.calculation_id, t.id, t.ohlc_id, t.time " +
-                //", t.time - lag(t.time, 1) over (order by t.time) as diff"+
-                " from tuple t inner join params p on p.ca_id = t.calculation_id ) " +
-                "select time from tuple_diff;"
-            )
-            .setParameter("calculationid", calculationId);
-        List<Object[]> resImpossibleJoin = impossibleJoin.getResultList();
-        assertNotNull(resImpossibleJoin);
-        assertFalse(resImpossibleJoin.isEmpty(), "result should not be empty");
-    }
-
-    @Test
     public void testFetchRepair() throws IOException {
         // init test data
         String json = IOUtils.toString(
@@ -232,4 +182,55 @@ class CalculationServiceIT {
 
         assertTrue(result.isPresent());
     }
+    
+    @Test
+    @Disabled
+    public void testingTest() throws IOException {
+        // init test data
+        String json = IOUtils.toString(
+            Objects.requireNonNull(this.getClass().getResourceAsStream("/json/broken-data.json")),
+            StandardCharsets.UTF_8
+        );
+        assertNotNull(json);
+
+        CalculationJsonTestData testData = objectMapper.readValue(json, CalculationJsonTestData.class);
+        assertNotNull(testData);
+
+        testData
+            .getOhlcs()
+            .stream()
+            .sorted(Comparator.comparing(Ohlc::getTime))
+            .forEach(ohlc -> {
+                ohlc.setId(null);
+                ohlc.setChart(chart);
+                Ohlc saved = ohlcRepository.saveAndFlush(ohlc);
+                ohlcs.put(saved.getTime(), saved);
+            });
+        testData
+            .getTuples()
+            .stream()
+            .sorted(Comparator.comparing(Tuple::getTime))
+            .forEach(t -> {
+                Ohlc ohlc = ohlcs.get(t.getTime());
+                t.setId(null);
+                t.setOhlc(ohlc);
+                t.setCalculation(calculation);
+                tupleRepository.saveAndFlush(t);
+            });
+        Long calculationId = calculation.getId(); // This is the Id of the calculation
+
+        Query impossibleJoin = entityManager
+            .createNativeQuery(
+                "with params as (select ca.id as ca_id, chart_id, range_size, range_size * interval '1' minute as size from calculation ca inner join chart c on c.id = ca.chart_id inner join time_range tr on tr.id = c.time_range_id where ca.id = :calculationid)," +
+                " tuple_diff as (select t.calculation_id, t.id, t.ohlc_id, t.time " +
+                //", t.time - lag(t.time, 1) over (order by t.time) as diff"+
+                " from tuple t inner join params p on p.ca_id = t.calculation_id ) " +
+                "select time from tuple_diff;"
+            )
+            .setParameter("calculationid", calculationId);
+        List<Object[]> resImpossibleJoin = impossibleJoin.getResultList();
+        assertNotNull(resImpossibleJoin);
+        assertFalse(resImpossibleJoin.isEmpty(), "result should not be empty");
+    }
+
 }
